@@ -589,8 +589,8 @@ public class SurfOAuthClient extends AbstractKeyManager {
         scopes.add("test");
         paramMap.put("scopes", scopes);
 
-        paramMap.put(SurfClientConstants.CLIENT_CONTACT_NAME, "John");
-        paramMap.put(SurfClientConstants.CLIENT_CONTAT_EMAIL, "john@example.com");
+        paramMap.put(SurfClientConstants.CLIENT_CONTACT_NAME, "John Doe");
+        paramMap.put(SurfClientConstants.CLIENT_CONTAT_EMAIL, "john@doe.com");
         if (oAuthApplicationInfo.getParameter("id") != null) {
             paramMap.put("id", oAuthApplicationInfo.getParameter("id"));
         }
