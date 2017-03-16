@@ -578,13 +578,6 @@ public class SurfOAuthClient extends AbstractKeyManager {
 
         Map<String, Object> paramMap = new HashMap<String, Object>();
 
-        if (oAuthApplicationInfo.getClientName() == null ||
-            oAuthApplicationInfo.getParameter(SurfClientConstants.CLIENT_CONTACT_NAME) == null ||
-            oAuthApplicationInfo.getParameter(SurfClientConstants.CLIENT_SCOPE) == null ||
-            oAuthApplicationInfo.getParameter(SurfClientConstants.CLIENT_CONTAT_EMAIL) == null) {
-            throw new APIManagementException("Mandatory parameters missing");
-        }
-
         // Format of the request needed.
         // {"name":"TestClient_1","scopes":["scope1"],
         // "contactName":"John Doe",
@@ -592,13 +585,12 @@ public class SurfOAuthClient extends AbstractKeyManager {
 
         paramMap.put(SurfClientConstants.CLIENT_NAME, oAuthApplicationInfo.getClientName());
 
-        JSONArray scopes = (JSONArray) oAuthApplicationInfo.getParameter(SurfClientConstants.CLIENT_SCOPE);
+        JSONArray scopes = new JSONArray();
+        scopes.add("test");
         paramMap.put("scopes", scopes);
 
-        paramMap.put(SurfClientConstants.CLIENT_CONTACT_NAME, oAuthApplicationInfo.getParameter(SurfClientConstants
-                                                                                                        .CLIENT_CONTACT_NAME));
-        paramMap.put(SurfClientConstants.CLIENT_CONTAT_EMAIL, oAuthApplicationInfo.getParameter(SurfClientConstants
-                                                                                                        .CLIENT_CONTAT_EMAIL));
+        paramMap.put(SurfClientConstants.CLIENT_CONTACT_NAME, "John");
+        paramMap.put(SurfClientConstants.CLIENT_CONTAT_EMAIL, "john@example.com");
         if (oAuthApplicationInfo.getParameter("id") != null) {
             paramMap.put("id", oAuthApplicationInfo.getParameter("id"));
         }
